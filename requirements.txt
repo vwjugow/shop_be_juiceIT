@@ -1,0 +1,10 @@
+flask
+flask-lambda
+PyMySQL
+cryptography
+flask-sqlalchemy
+aws-wsgi
+
+flake8
+black
+pytest

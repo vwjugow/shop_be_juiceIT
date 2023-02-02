@@ -1,10 +1,7 @@
 flask
 flask-lambda
-PyMySQL
 cryptography
 flask-sqlalchemy
 aws-wsgi
-
-flake8
-black
-pytest
+Werkzeug==2.0.3
+sqlalchemy<2.0

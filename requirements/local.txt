@@ -1,0 +1,7 @@
+-r core.txt
+
+psycopg2
+
+flake8
+black
+pytest

@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  database:
+    image: postgres
+    hostname: database
+    restart: always
+    ports:
+      - 32000:5432
+    volumes:
+      - ./db-data/:/docker-entrypoint-initdb.d/:ro
+    env_file: ./db-data/.env
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/var/app
+    env_file:
+      - ./.env
+    depends_on:
+      - database

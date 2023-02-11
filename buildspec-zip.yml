@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - python -m venv .venv
+      - . .venv/bin/activate
+      - pip install --upgrade pip
+      - echo "Installing dependencies..."
+      - pip install -r requirements/prod.txt
+  build:
+    commands:
+      - echo "Building the project..."
+      - python setup.py build
+      - . .venv/bin/activate
+      - packages_dir=$(python3 -c "import site; print(' '.join(site.getsitepackages()))")
+      - find $packages_dir -maxdepth 1 -mindepth 1 ! -name pip ! -name virtualenv ! -name setuptools ! -name easy_install -exec mv '{}' build/lib/ \;
+      - cp app.py build/lib/
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+artifacts:
+  base-directory: 'build/lib'
+  files:
+    - ./**/*.py
+    - project/**/*.cfg
+  name: "shop-be-app.zip"

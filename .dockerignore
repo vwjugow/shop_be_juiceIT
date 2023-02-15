@@ -1,7 +1,22 @@
 # virtual environments
 .venv
 
+# Envs
+.env
+
 # Python files
 *.pyc
 __pycache__
+tests
 
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Others
+Makefile
+build_zip.sh
+LICENSE
+.git
+.gitignore

@@ -1,1 +1,2 @@
 -r core.txt
+psycopg2
